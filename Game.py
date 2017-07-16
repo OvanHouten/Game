@@ -1,39 +1,56 @@
-#!/usr/bin/python
-
-
-#import shit;
-import os
-import sys
+#import
+import pygame
 import random
+import time
 
-from termcolor import cprint 
-from pyfiglet import figlet_format
+#init
+pygame.init()
 
-print "Let the game begin!"
+#init display
+gameDisplay = pygame.display.set_mode((800, 600))
+gameDisplay.fill((255, 255, 255))
+pygame.display.set_caption('-- KIH --')
 
-#INIT SHIT
-wl_array = []
+#init text
+font = pygame.font.SysFont("comicsansms", 50)
+huidigWoord = font.render("Press mouse button to start", True, (0, 0, 0))
+gameDisplay.blit(huidigWoord, (400 - huidigWoord.get_width() // 2, 300 - huidigWoord.get_height() // 2))
+font = pygame.font.SysFont("comicsansms", 75)                                                                           #incrase font size
 
-#read wl in array
-with open('../wl.txt') as wl:
-	wl_array = wl.readlines()
+#clock
+clock = pygame.time.Clock()
 
-#remove \n
+#lees array uit txt file
+with open('wl.txt') as wl:
+    wl_array = wl.readlines()
+    
+#remove \n from wl_array
 wl_array = [x.strip() for x in wl_array]
 
-#shuffle array
+#shuuffle array
 random.shuffle(wl_array)
 
-#print array
-for woord in wl_array:
-	#clear screen
-	os.system('clear')
+#init timer
+start_timer = time()
+struct = localtime(start_timer)                                                                                         #start timer
 
-	#print woord in banner
-	cprint(figlet_format(woord, font='starwars'),'yellow', 'on_green', attrs=['bold'])
 
-	#wacht op user in put
-	raw_input('Druk op `ENTER` voor volgend woord (CNTRL + C to quit)')
+#game loop
+stopGame = False
+i = 0
 
-	#clear screen
-	os.system('clear')
+while not stopGame:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            stopGame = True
+            pygame.quit()                                                                                               #quit game
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            stopGame = True
+        if event.type == pygame.MOUSEBUTTONUP and len(wl_array) > i:
+            gameDisplay.fill(pygame.Color("black"))                                                                     #clean whole screen
+            huidigWoord = font.render(wl_array[i], True, pygame.Color("green"))                                         #make new word
+            gameDisplay.blit(huidigWoord, (400 - huidigWoord.get_width() // 2, 300 - huidigWoord.get_height() // 2))    #display new word
+            i += 1                                                                                                      #increase i for array loop
+
+    pygame.display.flip()
+    clock.tick(60)
