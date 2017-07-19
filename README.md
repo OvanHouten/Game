@@ -1,6 +1,4 @@
 ## Wie ben ik?
-======
-### _Adriaan_
 
 #### _TODO_ --> _PyGame.py 
 * Applicatie fullscreen maken               (https://www.pygame.org/docs/ref/display.html)
