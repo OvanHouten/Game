@@ -11,3 +11,4 @@
 #### _TODO_ --> _Raspberry_
 * Desktop shortcut
 * TTS
+* PiStore (sudo apt-get update && sudo apt-get install pistore)
