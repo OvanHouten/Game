@@ -1,11 +1,11 @@
 ## Wie ben ik?
 
 #### _TODO_ --> _PyGame.py 
-* Applicatie fullscreen maken               (https://www.pygame.org/docs/ref/display.html)
+* Applicatie fullscreen maken               [LINK](https://www.pygame.org/docs/ref/display.html#pygame.display.toggle_fullscreen)
 * Applicatie structuur (classes / functies)
 * Layout voor game woord
-* Geluid feedback
-* Settings? (xml file?)
+* Geluid feedback                           [LINK](http://www.nerdparadise.com/programming/pygame/part3)
+* Settings? (xml file?)                     [LINK](https://stackoverflow.com/questions/19925056/create-a-game-configuration-options-config-cfg-file-in-python)
 
 
 #### _TODO_ --> _Raspberry_
